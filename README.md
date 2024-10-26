@@ -4,7 +4,7 @@ Made in Heaven é uma aplicação web interativa que apresenta um relógio anal�
 
 ## Recursos Principais
 
-* Relógio Analógico: Um relógio redondo elegante que exibe a hora atual com ponteiros de hora, minuto e segundo.
+* Relógio Analógico: Um relógio redondo que exibe a hora atual com ponteiros de hora, minuto e segundo.
 * Atualização Automática: O relógio é atualizado em tempo real, garantindo que a hora esteja sempre precisa.
 * Botão "Made in Heaven": Um botão especial que, ao ser pressionado, acelera o tempo, fazendo o relógio girar 20 vezes mais rápido durante um minuto.
 * Botão "Normal": Restaura o relógio à sua velocidade normal e reinicia o tempo para o horário inicial.
