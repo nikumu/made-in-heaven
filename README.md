@@ -1,6 +1,6 @@
-# made in Heaven
+# Made in Heaven
 
-Made in Heaven é uma aplicação web interativa e estilosa que apresenta um relógio analógico funcional, exibindo a hora de Brasília. O relógio possui um recurso especial inspirado em "Made in Heaven" (da série JoJo's Bizarre Adventure), onde um botão mágico acelera o tempo!
+Made in Heaven é uma aplicação web interativa que apresenta um relógio analógico funcional, exibindo a hora de Brasília. O relógio possui um recurso especial inspirado em "Made in Heaven" (da série [JoJo's Bizarre Adventure](https://jjba.fandom.com/pt-br/wiki/JoJo%27s_Bizarre_Adventure)), onde um botão mágico acelera o tempo!
 
 ## Começando
 
@@ -25,15 +25,5 @@ bun dev
 
 Abra [http://localhost:3000](http://localhost:3000) para ver o resultado.
 
-## Saiba Mais
 
-Para saber mais sobre Next.js, dê uma olhada nos seguintes recursos:
 
-- [Documentação do Next.js](https://nextjs.org/docs) - aprenda sobre os recursos e a API do Next.js.
-- [Learn Next.js](https://nextjs.org/learn) - um tutorial interativo de Next.js.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
