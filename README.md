@@ -9,6 +9,10 @@ Made in Heaven é uma aplicação web interativa que apresenta um relógio anal�
 * Botão "Made in Heaven": Um botão especial que, ao ser pressionado, acelera o tempo, fazendo o relógio girar 20 vezes mais rápido durante um minuto.
 * Botão "Normal": Restaura o relógio à sua velocidade normal e reinicia o tempo para o horário inicial.
 
+## Atualizações
+
+* Botão "ZA WARUDO": Para o relógio por 6 segundos.
+
 ## Tecnologias Utilizadas
 
 * HTML5: Estrutura básica da aplicação.
