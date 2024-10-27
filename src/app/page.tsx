@@ -7,19 +7,23 @@ export default function Component() {
   const [initialTime] = useState(new Date())
   const [accelerated, setAccelerated] = useState(false)
   const [rotations, setRotations] = useState(0)
+  const [stopped, setStopped] = useState(false)
+  const [zaWarudoActive, setZaWarudoActive] = useState(false)
   const clockRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(prevTime => {
-        const newTime = new Date(prevTime)
-        newTime.setMilliseconds(newTime.getMilliseconds() + (accelerated ? 2500 : 50))
-        return newTime
-      })
+      if (!stopped) {
+        setTime(prevTime => {
+          const newTime = new Date(prevTime)
+          newTime.setMilliseconds(newTime.getMilliseconds() + (accelerated ? 2500 : 50))
+          return newTime
+        })
+      }
     }, 50)
 
     return () => clearInterval(timer)
-  }, [accelerated])
+  }, [accelerated, stopped])
 
   useEffect(() => {
     if (accelerated) {
@@ -44,6 +48,16 @@ export default function Component() {
     setAccelerated(false)
     setRotations(0)
     setTime(new Date(initialTime))
+    setZaWarudoActive(false)
+  }
+
+  const handleZaWarudo = () => {
+    setStopped(true)
+    setZaWarudoActive(true)
+    setTimeout(() => {
+      setStopped(false)
+      setZaWarudoActive(false)
+    }, 6000)
   }
 
   const hour = time.getHours() % 12
@@ -55,19 +69,16 @@ export default function Component() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
       <div 
         ref={clockRef}
-        className="relative w-64 h-64 rounded-full bg-white shadow-xl" 
+        className={`relative w-64 h-64 rounded-full shadow-xl ${zaWarudoActive ? 'bg-black' : 'bg-white'}`}
       >
         {[...Array(12)].map((_, i) => (
           <div key={i} className="absolute w-full h-full">
             <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-4 bg-white" 
               style={{
-                transform: `rotate(${i * 30}deg)`,
-                transformOrigin: 'bottom center',
               }}
             />
             <span
-              className="absolute text-xl font-bold text-black" 
+              className={`absolute text-xl font-bold ${zaWarudoActive ? 'text-white' : 'text-black'}`}
               style={{
                 top: '50%',
                 left: '50%',
@@ -79,13 +90,13 @@ export default function Component() {
           </div>
         ))}
         <div
-          className="absolute top-1/2 left-1/2 w-1.5 h-16 bg-black rounded-full origin-bottom"
+          className={`absolute top-1/2 left-1/2 w-1.5 h-16 rounded-full origin-bottom ${zaWarudoActive ? 'bg-white' : 'bg-black'}`}
           style={{
             transform: `translate(-50%, -100%) rotate(${(hour + minute / 60) * 30}deg)`,
           }}
         />
         <div
-          className="absolute top-1/2 left-1/2 w-1 h-24 bg-black rounded-full origin-bottom"
+          className={`absolute top-1/2 left-1/2 w-1 h-24 rounded-full origin-bottom ${zaWarudoActive ? 'bg-white' : 'bg-black'}`}
           style={{
             transform: `translate(-50%, -100%) rotate(${(minute + second / 60) * 6}deg)`,
           }}
@@ -96,7 +107,7 @@ export default function Component() {
             transform: `translate(-50%, -100%) rotate(${(second + millisecond / 1000) * 6}deg)`,
           }}
         />
-        <div className="absolute top-1/2 left-1/2 w-3 h-3 bg-black rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+        <div className={`absolute top-1/2 left-1/2 w-3 h-3 rounded-full transform -translate-x-1/2 -translate-y-1/2 ${zaWarudoActive ? 'bg-white' : 'bg-black'}`} />
       </div>
       <div className="mt-8 flex flex-col space-y-4"> 
         <button
@@ -108,10 +119,18 @@ export default function Component() {
 
         <button
           onClick={handleMadeInHeaven}
-          className="px-6 py-2 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition-colors duration-300"
+          className="px-6 py-2 bg-purple-500 text-black font-bold rounded-full hover:bg-purple-400 transition-colors duration-300"
           disabled={accelerated}
         >
           Made in Heaven
+        </button>
+
+        <button
+          onClick={handleZaWarudo}
+          className="px-6 py-2 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-colors duration-300"
+          disabled={stopped}
+        >
+          ZA WARUDO
         </button>
       </div>
     </div>
